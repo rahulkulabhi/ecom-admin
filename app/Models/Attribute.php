@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Attribute extends Model
 {
-	use SoftDeletes;
 
     protected $fillable = ['title', 'slug'];
 
