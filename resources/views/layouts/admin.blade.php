@@ -19,6 +19,7 @@
 
     <!-- Custom styles for global loader -->
     <link href="{{ asset('css/loader.css') }}" rel="stylesheet">
+    @yield('styles')
 </head>
 
 <body id="page-top">
@@ -107,6 +108,7 @@
 
     <!-- Custom scripts for loader -->
     <script src="{{ asset('js/loader.js') }}"></script>
+    @yield('scripts')
     </body>
 
 </html>
