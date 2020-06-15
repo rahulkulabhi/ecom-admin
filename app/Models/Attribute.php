@@ -10,7 +10,4 @@ class Attribute extends Model
 
     protected $fillable = ['title', 'slug'];
 
-    public function options(){
-    	return $this->hasMany('App\Models\Option');
-    }
 }

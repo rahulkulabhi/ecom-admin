@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('styles')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/tagsinput.css') }}">
 @endsection
 
 @section('content')
@@ -37,6 +38,14 @@
                     @endif
                 </div>
 
+                @php
+                    $options_arr = unserialize($attribute->options);
+                @endphp
+                <div class="form-group">
+                    <label for="attibuteOptions">Options</label>
+                    <input type="text" name="options" class="form-control" data-role="tagsinput" value="{{ !empty($options_arr) ? implode(',', $options_arr) : '' }}"/>
+                </div>
+
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
         </div>
@@ -44,6 +53,7 @@
 @endsection
 
 @section('scripts')
+<script type="text/javascript" src="{{ asset('js/tagsinput.js') }}"></script>
 <script type="text/javascript">
     $(document).on('blur', 'input#attibuteTitle', function(){
         var slug = $(this).val().toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');

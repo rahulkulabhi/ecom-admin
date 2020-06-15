@@ -25,6 +25,12 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
 
 
 	Route::prefix('product')->group(function(){
+
+		Route::get('/show', 'Product\ProductController@index')->name('show-products');
+		Route::get('/add', 'Product\ProductController@add')->name('add-product');
+		Route::post('/add', 'Product\ProductController@on_adding')->name('add-product');
+		Route::get('/edit/{id}', 'Product\ProductController@edit')->name('edit-product');
+		Route::post('/edit/{id}', 'Product\ProductController@on_edit')->name('edit-product');
 		
 		Route::get('/attribute', 'Product\AttributesController@index')->name('show-atrributes');
 

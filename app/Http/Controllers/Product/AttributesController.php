@@ -44,9 +44,8 @@ class AttributesController extends Controller
     }
 
     public function on_edit(Request $request, $id){
-
+        //dd( serialize( explode(",", $request->options) ) );
     	$attribute = Attribute::find($id);
-    	//dd([$attribute->slug, $request->slug]);
     	if($request->slug == $attribute->slug){
     		$validation = Validator::make($request->all(), [
 	    		'title' => ['required', 'string', 'max:25', 'min:3'],
@@ -65,7 +64,8 @@ class AttributesController extends Controller
     	}
 
     	$attribute->title = $request->title;
-    	$attribute->slug = $request->slug;
+        $attribute->slug = $request->slug;
+    	$attribute->options = serialize( array_unique( explode(",", $request->options) ) );
 
     	$attribute->save();
 
